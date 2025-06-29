@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyCleaners - Profesjonalne czyszczenie klawiatur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .keyboard-bg {
+            background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-keyboard text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">Key<span class="text-blue-500">Cleaners</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-blue-500 px-3 py-2 text-sm font-medium">Strona główna</a>
+                    <a href="#services" class="text-gray-900 hover:text-blue-500 px-3 py-2 text-sm font-medium">Usługi</a>
+                    <a href="#about" class="text-gray-900 hover:text-blue-500 px-3 py-2 text-sm font-medium">O nas</a>
+                    <a href="#contact" class="text-gray-900 hover:text-blue-500 px-3 py-2 text-sm font-medium">Kontakt</a>
+                    <a href="#order" class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition duration-300">Zamów usługę</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-900 hover:text-blue-500 block px-3 py-2 rounded-md text-base font-medium">Strona główna</a>
+                <a href="#services" class="text-gray-900 hover:text-blue-500 block px-3 py-2 rounded-md text-base font-medium">Usługi</a>
+                <a href="#about" class="text-gray-900 hover:text-blue-500 block px-3 py-2 rounded-md text-base font-medium">O nas</a>
+                <a href="#contact" class="text-gray-900 hover:text-blue-500 block px-3 py-2 rounded-md text-base font-medium">Kontakt</a>
+                <a href="#order" class="bg-blue-500 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-300">Zamów usługę</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="keyboard-bg bg-blue-700 text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Profesjonalne czyszczenie klawiatur za <span class="text-yellow-300">15 zł</span></h1>
+                    <p class="text-xl mb-8">Twoja klawiatura znów będzie jak nowa! Usuwamy kurz, okruchy i bakterie, przywracając jej dawną świetność.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#order" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg text-center transition duration-300 btn-hover-effect">
+                            <i class="fas fa-broom mr-2"></i> Zamów czyszczenie
+                        </a>
+                        <a href="#services" class="bg-transparent hover:bg-blue-800 text-white font-bold py-3 px-6 border-2 border-white rounded-lg text-center transition duration-300 btn-hover-effect">
+                            <i class="fas fa-info-circle mr-2"></i> Dowiedz się więcej
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83cc3a?ixlib=rb-4.0.3" alt="Czysta klawiatura" class="rounded-lg shadow-2xl transform rotate-3 border-4 border-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nasze usługi</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Oferujemy kompleksowe usługi czyszczenia klawiatur w konkurencyjnych cenach</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Cleaning -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-500 mb-4">
+                            <i class="fas fa-broom text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Podstawowe czyszczenie</h3>
+                        <div class="flex justify-center items-baseline my-4">
+                            <span class="text-3xl font-bold text-gray-900">15 zł</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Kompleksowe czyszczenie klawiatury z usunięciem kurzu, okruchów i powierzchownych zabrudzeń</p>
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Czyszczenie powierzchni klawiszy</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Usuwanie kurzu spod klawiszy</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Dezynfekcja powierzchni</span>
+                            </li>
+                        </ul>
+                        <a href="#order" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 inline-flex items-center justify-center btn-hover-effect">
+                            <i class="fas fa-shopping-cart mr-2"></i> Zamów teraz
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Deep Cleaning -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden p-6 border-2 border-blue-500 transform scale-105 animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
+                            <i class="fas fa-shower text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Głębokie czyszczenie</h3>
+                        <div class="flex justify-center items-baseline my-4">
+                            <span class="text-3xl font-bold text-gray-900">30 zł</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Zaawansowane czyszczenie z demontażem klawiszy i dokładnym czyszczeniem mechanizmu</p>
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Wszystko z podstawowego czyszczenia</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Demontaż klawiszy</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Czyszczenie mechanizmu</span>
+                            </li>
+                        </ul>
+                        <a href="#order" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 inline-flex items-center justify-center btn-hover-effect">
+                            <i class="fas fa-shopping-cart mr-2"></i> Zamów teraz
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-fade-in" style="animation-delay: 0.6s;">
+                    <div class="text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-500 mb-4">
+                            <i class="fas fa-crown text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Pakiet premium</h3>
+                        <div class="flex justify-center items-baseline my-4">
+                            <span class="text-3xl font-bold text-gray-900">50 zł</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Pełen serwis klawiatury z dodatkowymi usługami, czyszczeniem kabla i gwarancją</p>
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Wszystko z głębokiego czyszczenia</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Impregnacja klawiszy</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Czyszczenie kabla gratis</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>60-dniowa gwarancja</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Bezpłatna diagnostyka</span>
+                            </li>
+                        </ul>
+                        <a href="#order" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 inline-flex items-center justify-center btn-hover-effect">
+                            <i class="fas fa-shopping-cart mr-2"></i> Zamów teraz
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Dlaczego warto wybrać KeyCleaners?</h2>
+                    <p class="text-lg text-gray-600 mb-6">Jesteśmy pasjonatami czystych klawiatur. Od 2015 roku specjalizujemy się w profesjonalnym czyszczeniu klawiatur mechanicznych, membranowych i wszystkich innych typów.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-lg p-3">
+                                <i class="fas fa-award text-blue-500 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Doświadczenie</h3>
+                                <p class="text-gray-600">Ponad 5000 wyczyszczonych klawiatur i setki zadowolonych klientów.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-lg p-3">
+                                <i class="fas fa-shield-alt text-blue-500 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Bezpieczeństwo</h3>
+                                <p class="text-gray-600">Stosujemy tylko sprawdzone metody i środki czyszczące, które nie uszkodzą Twojej klawiatury.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-lg p-3">
+                                <i class="fas fa-bolt text-blue-500 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Szybkość</h3>
+                                <p class="text-gray-600">Podstawowe czyszczenie wykonujemy w ciągu 30 minut, a głębokie w ciągu 2 godzin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="aspect-w-16 aspect-h-9 mb-6">
+                            <img src="https://images.unsplash.com/photo-1593640408182-31c228b8f1b9?ixlib=rb-4.0.3" alt="Nasz zespół przy pracy" class="rounded-lg w-full h-auto">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Nasz proces czyszczenia</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">1</div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700">Dokładna diagnostyka stanu klawiatury</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">2</div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700">Usunięcie kurzu i zabrudzeń sprężonym powietrzem</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">3</div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700">Czyszczenie klawiszy specjalistycznymi środkami</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">4</div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700">Dezynfekcja powierzchni</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">5</div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700">Ostateczna kontrola jakości</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Opinie naszych klientów</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Poznaj doświadczenia osób, które skorzystały z naszych usług</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Anna K.">
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Anna K.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Moja klawiatura wygląda jak nowa! Profesjonalna obsługa i szybka realizacja. Polecam każdemu, kto ceni sobie czystość i porządek."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Marek Z.">
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Marek Z.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Klawiatura mechaniczna po czyszczeniu działa znacznie lepiej. Zniknęły problemy z przyciskami, a sama klawiatura wygląda rewelacyjnie."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Katarzyna P.">
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Katarzyna P.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Szybko, sprawnie i bardzo dokładnie. Klawiatura laptopa wygląda jak nowa, a klawisze znów działają bez zarzutu. Na pewno wrócę!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                <div class="animate-fade-in">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Zamów czyszczenie klawiatury</h2>
+                    <p class="text-lg text-gray-600 mb-8">Wypełnij formularz, a skontaktujemy się z Tobą w celu ustalenia szczegółów.</p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Dlaczego warto regularnie czyścić klawiaturę?</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>Klawiatura może zawierać więcej bakterii niż deska sedesowa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>Zabrudzenia mogą powodować nieprawidłowe działanie klawiszy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>Częste czyszczenie przedłuża żywotność klawiatury</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>Czysta klawiatura to lepsze wrażenia z pisania</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+                <div class="mt-12 lg:mt-0 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <form id="order-form" class="space-y-6" method="POST" action="https://formspree.io/f/skamolaxd13@gmail.com">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Imię i nazwisko</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                           
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700">Wybierz usługę</label>
+                                <select id="service" name="service" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="basic">Podstawowe czyszczenie (15 zł)</option>
+                                    <option value="deep">Głębokie czyszczenie (30 zł)</option>
+                                    <option value="premium">Pakiet premium (50 zł)</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Numer telefonu</label>
+                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Dodatkowe informacje</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            
+                            <input type="hidden" name="_subject" value="Nowe zamówienie z KeyCleaners">
+                            
+                            <div class="flex items-center">
+                                <input id="terms" name="terms" type="checkbox" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="terms" class="ml-2 block text-sm text-gray-700">
+                                    Akceptuję <a href="#" class="text-blue-500 hover:text-blue-700">regulamin</a> i <a href="#" class="text-blue-500 hover:text-blue-700">politykę prywatności</a>
+                                </label>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center btn-hover-effect">
+                                    <i class="fas fa-paper-plane mr-2"></i> Wyślij zamówienie
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div class="animate-fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Kontakt</h2>
+                    <p class="text-gray-300 mb-8">Skontaktuj się z nami, aby uzyskać więcej informacji lub umówić się na czyszczenie.</p>
+                    
+                    
+                           
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-500 rounded-lg p-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Email</h3>
+                                <p class="text-gray-300">skamolaxd13@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 lg:mt-0 lg:col-span-2 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6">Godziny otwarcia</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-lg font-medium text-blue-400 mb-4">Punkt serwisowy</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex justify-between border-b border-gray-700 pb-2">
+                                        <span class="text-gray-300">Poniedziałek - Piątek</span>
+                                        <span class="font-medium">12:00 - 16:00</span>
+                                    </li>
+                                    <li class="flex justify-between border-b border-gray-700 pb-2">
+                                        <span class="text-gray-300">Sobota</span>
+                                        <span class="font-medium">13:00 - 15:00</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span class="text-gray-300">Niedziela</span>
+                                        <span class="font-medium">Zamknięte</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-medium text-blue-400 mb-4">Odbiór i dostawa</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex justify-between border-b border-gray-700 pb-2">
+                                        <span class="text-gray-300">Poniedziałek - Piątek</span>
+                                        <span class="font-medium">11:00 - 17:00</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span class="text-gray-300">Weekend</span>
+                                        <span class="font-medium">Na zamówienie</span>
+                                    </li>
+                                </ul>
+                                
+                                <div class="mt-8">
+                                    <h4 class="text-lg font-medium text-blue-400 mb-4">Obsługujemy</h4>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Całą Polske!</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Najczęściej zadawane pytania</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Odpowiedzi na najpopularniejsze pytania dotyczące naszych usług</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+                            <h3 class="text-lg font-medium text-gray-900">Jak długo trwa czyszczenie klawiatury?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 pt-2">
+                            <p class="text-gray-600">Czas czyszczenia zależy od wybranej usługi. Podstawowe czyszczenie trwa około 30 minut, głębokie czyszczenie zajmuje do 2 godzin, a pakiet premium może zająć do 3 godzin. W przypadku bardzo zabrudzonych klawiatur czas może się wydłużyć.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+                            <h3 class="text-lg font-medium text-gray-900">Czy czyszczenie jest bezpieczne dla mojej klawiatury?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 pt-2">
+                            <p class="text-gray-600">Tak, stosujemy tylko sprawdzone metody i środki czyszczące, które są bezpieczne dla wszystkich typów klawiatur. Przed rozpoczęciem pracy zawsze sprawdzamy specyfikację klawiatury i dobieramy odpowiednie metody czyszczenia. W przypadku klawiatur mechanicznych szczególną uwagę zwracamy na ochronę przełączników.</p>
+                        </div>
+                    </div>
+                    
+                  
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+                            <h3 class="text-lg font-medium text-gray-900">Czy czyszczenie wpływa na gwarancję klawiatury?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 pt-2">
+                            <p class="text-gray-600">W większości przypadków profesjonalne czyszczenie nie wpływa na gwarancję producenta, ponieważ nie ingerujemy w elektronikę klawiatury. Jednak zalecamy sprawdzenie warunków gwarancji przed oddaniem klawiatury do czyszczenia. W pakiecie premium oferujemy dodatkowo naszą 30-dniową gwarancję na wykonaną usługę.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+                            <h3 class="text-lg font-medium text-gray-900">Czy oferujecie usługi dla firm?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 pt-2">
+                            <p class="text-gray-600">Tak, świadczymy usługi czyszczenia klawiatur dla firm. Oferujemy specjalne warunki dla stałych klientów biznesowych, w tym zniżki przy większych zamówieniach i możliwość regularnych wizyt w siedzibie firmy. Skontaktuj się z nami, aby omówić szczegóły współpracy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">KeyCleaners</h3>
+                    <p class="text-gray-400">Profesjonalne czyszczenie klawiatur od 2024 roku. Dbamy o czystość i funkcjonalność Twojego sprzętu.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Usługi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Podstawowe czyszczenie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Głębokie czyszczenie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pakiet premium</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Czyszczenie dla firm</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Linki</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">O nas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kariera</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Zapisz się do naszego newslettera, aby otrzymywać promocje i porady dotyczące pielęgnacji klawiatur.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Twój email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-900">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 KeyCleaners. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Polityka prywatności</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Warunki korzystania</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Ustawienia cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Toggle answer visibility
+                answer.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (answer.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('order-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            try {
+                // Disable button during submission
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Wysyłanie...';
+                
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const name = document.getElementById('name').value;
+                    const service = document.getElementById('service').value;
+                    alert(`Dziękujemy ${name}! Twoje zamówienie na ${service} zostało przyjęte. Skontaktujemy się z Tobą w ciągu 24 godzin.`);
+                    form.reset();
+                } else {
+                    throw new Error('Błąd podczas wysyłania formularza');
+                }
+            } catch (error) {
+                alert('Wystąpił błąd podczas wysyłania formularza. Prosimy spróbować ponownie później.');
+                console.error(error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Wyślij zamówienie';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
