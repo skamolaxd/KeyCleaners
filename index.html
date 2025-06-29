@@ -11,33 +11,255 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float-rotate {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-20px, 20px); }
+        }
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-float-rotate {
+            animation: float-rotate 4s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .ribbon span {
+            position: absolute;
+            display: block;
+            width: 225px;
+            padding: 15px 0;
+            background-color: #3b82f6;
+            box-shadow: 0 5px 10px rgba(0,0,0,.1);
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            right: -25px;
+            top: 30px;
+            transform: rotate(45deg);
+        }
+        
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .animate-blob {
+            animation: blob 8s ease-in-out infinite;
+        }
+        
+        .animate-delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.9s;
+        }
+        
+        .animate-delay-4 {
+            animation-delay: 1.2s;
         }
         .keyboard-bg {
-            background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3');
+            background-image: linear-gradient(to right, rgba(29, 78, 216, 0.9), rgba(59, 130, 246, 0.8)), url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3');
             background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
+            background-attachment: fixed;
         }
         .btn-hover-effect {
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
         .btn-hover-effect:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
+            background-size: 400%;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        .btn-hover-effect:hover::after {
+            opacity: 1;
+            animation: shine 1.5s infinite;
+        }
+        @keyframes shine {
+            0% { background-position: -100%; }
+            100% { background-position: 100%; }
         }
         .service-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(to bottom, #ffffff, #f9fafb);
+            border-radius: 12px;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        .highlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 60px 60px 0;
+            border-color: transparent #3b82f6 transparent transparent;
+            z-index: 1;
+        }
+        .highlight-card::after {
+            content: 'Polecane';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+            transform: rotate(45deg);
+            transform-origin: right top;
+        }
+        @keyframes float-card {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float-card {
+            animation: float-card 4s ease-in-out infinite;
+        }
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(59, 130, 246, 0.5);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+        .blob:nth-child(2) {
+            animation-delay: 2s;
+            animation-duration: 10s;
+        }
+        .blob:nth-child(3) {
+            animation-delay: 4s;
+            animation-duration: 12s;
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
+    <!-- Promo Banner -->
+    <div class="bg-yellow-400 text-black text-center py-4 font-bold text-xl md:text-2xl shadow-md">
+      <div class="max-w-7xl mx-auto px-4">
+        PROMOCJA! WSZYSTKIE USŁUGI W NIŻSZYCH CENACH! <span class="animate-pulse">🔥</span><br>
+        <span class="text-lg">   
+            
+        ‼️UWAGA‼️ PRZEPRASZAMY ZA ZNIKNIECIE USLUGI GLEBOKIE CZYSZCZENIE WYSTARCZY PODCZAS ZAMAWIANIA WYBRAC USLUGE GLEBOKIE CZYSZCZENIE PRZEPRASZAMY‼️🥺
+        </span>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,14 +301,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="keyboard-bg bg-blue-700 text-white py-20 md:py-32">
+    <section id="home" class="keyboard-bg text-white py-20 md:py-32 relative overflow-hidden">
+        <div class="blob animate-blob" style="top: -100px; left: -100px; background: rgba(251, 191, 36, 0.5);"></div>
+        <div class="blob animate-blob" style="bottom: -100px; right: -100px; background: rgba(239, 68, 68, 0.4); animation-delay: 2s;"></div>
+        <div class="blob animate-blob" style="top: 50%; left: 30%; width: 200px; height: 200px; background: rgba(59, 130, 246, 0.3); animation-delay: 4s;"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:justify-between">
-                <div class="md:w-1/2 animate-fade-in">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Profesjonalne czyszczenie klawiatur za <span class="text-yellow-300">15 zł</span></h1>
+                <div class="md:w-1/2 animate-slide-left animate-delay-1">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Profesjonalne czyszczenie klawiatur <span class="text-yellow-300">w promocyjnych cenach!</span></h1>
                     <p class="text-xl mb-8">Twoja klawiatura znów będzie jak nowa! Usuwamy kurz, okruchy i bakterie, przywracając jej dawną świetność.</p>
+                    <p class="text-yellow-300 font-medium mb-4"><i class="fas fa-fire mr-2"></i>Promocja na wszystkie usługi trwa tylko do końca wakacji!</p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#order" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg text-center transition duration-300 btn-hover-effect">
+                        <a href="#order" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg text-center transition duration-300 btn-hover-effect animate-pulse">
                             <i class="fas fa-broom mr-2"></i> Zamów czyszczenie
                         </a>
                         <a href="#services" class="bg-transparent hover:bg-blue-800 text-white font-bold py-3 px-6 border-2 border-white rounded-lg text-center transition duration-300 btn-hover-effect">
@@ -94,12 +320,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block md:w-1/2 animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="hidden md:block md:w-1/2 animate-slide-right animate-delay-2">
                     <div class="relative">
                         <div class="absolute -top-10 -left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
                         <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83cc3a?ixlib=rb-4.0.3" alt="Czysta klawiatura" class="rounded-lg shadow-2xl transform rotate-3 border-4 border-white">
+                        <div class="flex flex-col items-center justify-center relative z-10">
+                            <div class="relative animate-float-rotate">
+                                <i class="fas fa-keyboard text-yellow-300 text-9xl mb-4"></i>
+                                <div class="absolute inset-0 bg-yellow-300 rounded-full opacity-20 blur-xl animate-pulse"></div>
+                            </div>
+                            <span class="text-4xl font-bold text-white bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Key<span class="text-yellow-300">Cleaners</span></span>
                         </div>
                     </div>
                 </div>
@@ -108,7 +338,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
+    <section id="services" class="py-20 bg-gradient-to-b from-white to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Nasze usługi</h2>
@@ -117,14 +347,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Basic Cleaning -->
-                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-fade-in animate-delay-1">
                     <div class="text-center">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-500 mb-4">
                             <i class="fas fa-broom text-xl"></i>
                         </div>
                         <h3 class="text-lg font-medium text-gray-900 mb-2">Podstawowe czyszczenie</h3>
                         <div class="flex justify-center items-baseline my-4">
-                            <span class="text-3xl font-bold text-gray-900">15 zł</span>
+                            <span class="text-sm line-through text-gray-500 mr-2">15 zł</span>
+                            <span class="text-3xl font-bold text-gray-900">9 zł</span>
+                            <span class="ml-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">-40%</span>
                         </div>
                         <p class="text-gray-600 mb-6">Kompleksowe czyszczenie klawiatury z usunięciem kurzu, okruchów i powierzchownych zabrudzeń</p>
                         <ul class="space-y-3 mb-8 text-left">
@@ -148,14 +380,17 @@
                 </div>
 
                 <!-- Deep Cleaning -->
-                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden p-6 border-2 border-blue-500 transform scale-105 animate-fade-in" style="animation-delay: 0.4s;">
+                <div class="service-card highlight-card shadow-lg overflow-hidden p-6 border-2 border-blue-500 transform scale-105 animate-fade-in animate-delay-2 animate-glow">
+                    <div class="ribbon"><span>BESTSELLER</span></div>
                     <div class="text-center">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
                             <i class="fas fa-shower text-xl"></i>
                         </div>
                         <h3 class="text-lg font-medium text-gray-900 mb-2">Głębokie czyszczenie</h3>
                         <div class="flex justify-center items-baseline my-4">
-                            <span class="text-3xl font-bold text-gray-900">30 zł</span>
+                            <span class="text-sm line-through text-gray-500 mr-2">30 zł</span>
+                            <span class="text-3xl font-bold text-gray-900">19.50 zł</span>
+                            <span class="ml-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">-35%</span>
                         </div>
                         <p class="text-gray-600 mb-6">Zaawansowane czyszczenie z demontażem klawiszy i dokładnym czyszczeniem mechanizmu</p>
                         <ul class="space-y-3 mb-8 text-left">
@@ -179,14 +414,16 @@
                 </div>
 
                 <!-- Premium Package -->
-                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-fade-in" style="animation-delay: 0.6s;">
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100 animate-slide-right animate-delay-3">
                     <div class="text-center">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-500 mb-4">
                             <i class="fas fa-crown text-xl"></i>
                         </div>
                         <h3 class="text-lg font-medium text-gray-900 mb-2">Pakiet premium</h3>
                         <div class="flex justify-center items-baseline my-4">
-                            <span class="text-3xl font-bold text-gray-900">50 zł</span>
+                            <span class="text-sm line-through text-gray-500 mr-2">50 zł</span>
+                            <span class="text-3xl font-bold text-gray-900">37.50 zł</span>
+                            <span class="ml-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">-25%</span>
                         </div>
                         <p class="text-gray-600 mb-6">Pełen serwis klawiatury z dodatkowymi usługami, czyszczeniem kabla i gwarancją</p>
                         <ul class="space-y-3 mb-8 text-left">
@@ -306,7 +543,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-16 bg-blue-50">
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Opinie naszych klientów</h2>
@@ -314,7 +551,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in">
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-left animate-delay-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="flex-shrink-0">
                             <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Anna K.">
@@ -333,7 +570,7 @@
                     <p class="text-gray-600">"Moja klawiatura wygląda jak nowa! Profesjonalna obsługa i szybka realizacja. Polecam każdemu, kto ceni sobie czystość i porządek."</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in animate-delay-2 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="flex-shrink-0">
                             <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Marek Z.">
@@ -352,7 +589,7 @@
                     <p class="text-gray-600">"Klawiatura mechaniczna po czyszczeniu działa znacznie lepiej. Zniknęły problemy z przyciskami, a sama klawiatura wygląda rewelacyjnie."</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in" style="animation-delay: 0.4s;">
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-right animate-delay-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="flex-shrink-0">
                             <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Katarzyna P.">
@@ -424,9 +661,9 @@
                             <div>
                                 <label for="service" class="block text-sm font-medium text-gray-700">Wybierz usługę</label>
                                 <select id="service" name="service" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                                    <option value="basic">Podstawowe czyszczenie (15 zł)</option>
-                                    <option value="deep">Głębokie czyszczenie (30 zł)</option>
-                                    <option value="premium">Pakiet premium (50 zł)</option>
+                                    <option value="basic">Podstawowe czyszczenie (9 zł, -40%)</option>
+                                    <option value="deep">Głębokie czyszczenie (19.50 zł, -35%)</option>
+                                    <option value="premium">Pakiet premium (37.50 zł, -25%)</option>
                                 </select>
                             </div>
                             
@@ -593,7 +830,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-white py-16 relative overflow-hidden border-t-4 border-blue-500">
+        <div class="blob" style="top: -150px; left: -150px; background: rgba(59, 130, 246, 0.2); width: 400px; height: 400px;"></div>
+        <div class="blob" style="bottom: -100px; right: -100px; background: rgba(251, 191, 36, 0.15); width: 300px; height: 300px;"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -609,7 +848,7 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Usługi</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Podstawowe czyszczenie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 hover:pl-2 block">Podstawowe czyszczenie</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white">Głębokie czyszczenie</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white">Pakiet premium</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white">Czyszczenie dla firm</a></li>
@@ -626,15 +865,26 @@
                     </ul>
                 </div>
                 
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">Zapisz się do naszego newslettera, aby otrzymywać promocje i porady dotyczące pielęgnacji klawiatur.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Twój email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-900">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-md transition duration-300">
-                            <i class="fas fa-paper-plane"></i>
+                <div class="relative z-10">
+                    <h3 class="text-xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Newsletter</h3>
+                    <p class="text-gray-300 mb-6">Zapisz się do naszego newslettera, aby otrzymywać ekskluzywne promocje i porady dotyczące pielęgnacji klawiatur.</p>
+                    <form class="flex space-x-2">
+                        <input type="email" placeholder="Twój email" class="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 transition duration-300 hover:shadow-lg">
+                        <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30 flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Zapisz się
                         </button>
                     </form>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -737,21 +987,57 @@
 
         // Animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-fade-in');
+            const elements = document.querySelectorAll('[class*="animate-"]');
             
             elements.forEach(element => {
+                if(element.classList.contains('animate-once')) continue;
+                
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
                 
                 if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+                    const animation = Array.from(element.classList)
+                        .find(className => className.startsWith('animate-'));
+                    
+                    if(animation) {
+                        element.style.opacity = '1';
+                        element.style.animationPlayState = 'running';
+                    }
                 }
             });
         };
 
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Run once immediately
+            animateOnScroll();
+            
+            // Then run on scroll
+            window.addEventListener('scroll', animateOnScroll, { passive: true });
+            
+            // Force animation start for all animated elements
+            document.querySelectorAll('[class*="animate-"]').forEach(el => {
+                el.style.opacity = '1';
+            });
+            
+            // Add intersection observer for more precise animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        const animation = Array.from(entry.target.classList)
+                            .find(className => className.startsWith('animate-'));
+                        if(animation) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('[class*="animate-"]').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
