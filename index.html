@@ -23,8 +23,8 @@
         }
         
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
         }
         
         @keyframes slideInLeft {
@@ -49,6 +49,16 @@
         }
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
+            opacity: 1;
+        }
+
+        @keyframes sectionSlide {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-animate {
+            animation: sectionSlide 0.6s ease-out forwards;
             opacity: 0;
         }
         
@@ -85,6 +95,8 @@
             width: 150px;
             height: 150px;
             overflow: hidden;
+            transform: translateZ(0); /* Fix for hardware acceleration */
+            backface-visibility: hidden; /* Prevent flickering */
         }
         
         .ribbon span {
@@ -194,31 +206,8 @@
         }
         .highlight-card {
             position: relative;
-            overflow: hidden;
-        }
-        .highlight-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 60px 60px 0;
-            border-color: transparent #3b82f6 transparent transparent;
-            z-index: 1;
-        }
-        .highlight-card::after {
-            content: 'Polecane';
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 2;
-            transform: rotate(45deg);
-            transform-origin: right top;
+            overflow: visible;
+            z-index: 10;
         }
         @keyframes float-card {
             0% { transform: translateY(0px); }
@@ -252,10 +241,10 @@
     <!-- Promo Banner -->
     <div class="bg-yellow-400 text-black text-center py-4 font-bold text-xl md:text-2xl shadow-md">
       <div class="max-w-7xl mx-auto px-4">
-        PROMOCJA! WSZYSTKIE USŁUGI W NIŻSZYCH CENACH! <span class="animate-pulse">🔥</span><br>
+        PROMOCJA! WSZYSTKIE USŁUGI W NIŻSZYCH CENACH DO KOŃCA WAKACJI! <span class="animate-pulse">🔥</span><br>
         <span class="text-lg">   
             
-        ‼️UWAGA‼️ PRZEPRASZAMY ZA ZNIKNIECIE USLUGI GLEBOKIE CZYSZCZENIE WYSTARCZY PODCZAS ZAMAWIANIA WYBRAC USLUGE GLEBOKIE CZYSZCZENIE PRZEPRASZAMY‼️🥺
+        
         </span>
       </div>
     </div>
@@ -338,7 +327,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gradient-to-b from-white to-blue-50">
+    <section id="services" class="py-20 bg-gradient-to-b from-white to-blue-50 section-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Nasze usługi</h2>
@@ -380,13 +369,12 @@
                 </div>
 
                 <!-- Deep Cleaning -->
-                <div class="service-card highlight-card shadow-lg overflow-hidden p-6 border-2 border-blue-500 transform scale-105 animate-fade-in animate-delay-2 animate-glow">
-                    <div class="ribbon"><span>BESTSELLER</span></div>
+                <div class="service-card shadow-lg overflow-hidden p-6 border-2 border-blue-500 animate-fade-in animate-delay-2 relative" style="z-index: 10;">
                     <div class="text-center">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
                             <i class="fas fa-shower text-xl"></i>
                         </div>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">Głębokie czyszczenie</h3>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Głębokie Czyszczenie</h3>
                         <div class="flex justify-center items-baseline my-4">
                             <span class="text-sm line-through text-gray-500 mr-2">30 zł</span>
                             <span class="text-3xl font-bold text-gray-900">19.50 zł</span>
@@ -458,7 +446,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
+    <section id="about" class="py-16 bg-gray-50 section-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:flex lg:items-center lg:justify-between">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in">
@@ -612,7 +600,7 @@
     </section>
 
     <!-- Order Section -->
-    <section id="order" class="py-16 bg-white">
+    <section id="order" class="py-16 bg-white section-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16">
                 <div class="animate-fade-in">
@@ -645,7 +633,7 @@
                 
                 <div class="mt-12 lg:mt-0 animate-fade-in" style="animation-delay: 0.3s;">
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <form id="order-form" class="space-y-6" method="POST" action="https://formspree.io/f/skamolaxd13@gmail.com">
+                        <form id="order-form" class="space-y-6" onsubmit="processOrder(event)">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Imię i nazwisko</label>
                                 <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
@@ -686,10 +674,18 @@
                                 </label>
                             </div>
                             
+                            <div class="text-red-500 text-sm font-bold mb-4">
+                                UWAGA: Jeśli nie wyślesz klawiatury w ciągu 3 dni od zakupu, zgłoś to na policję!
+                            </div>
                             <div>
                                 <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center btn-hover-effect">
-                                    <i class="fas fa-paper-plane mr-2"></i> Wyślij zamówienie
+                                    <i class="fas fa-shopping-cart mr-2"></i> Przejdź do płatności
                                 </button>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="#instructions" class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                    <i class="fas fa-info-circle mr-1"></i> Przeczytaj instrukcję zamówienia
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -699,7 +695,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-900 text-white">
+    <section id="contact" class="py-16 bg-gray-900 text-white section-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">
                 <div class="animate-fade-in">
@@ -774,7 +770,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white section-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Najczęściej zadawane pytania</h2>
@@ -899,6 +895,27 @@
         </div>
     </footer>
 
+    <div id="instructions" class="bg-yellow-100 border-l-4 border-yellow-500 p-4 max-w-7xl mx-auto mb-8">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl mr-4"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-yellow-800 mb-2">INSTRUKCJA ZAMÓWIENIA</h3>
+                <ol class="list-decimal pl-5 space-y-2 text-yellow-700">
+                    <li>Kup kartę Paysafecard na kwotę odpowiadającą wybranej usłudze</li>
+                    <li>W formularzu zamówienia podaj kod z karty Paysafecard</li>
+                    <li>Wyślij klawiaturę na podany adres paczkomatu</li>
+                    <li>Po otrzymaniu klawiatury rozpoczniemy czyszczenie</li>
+                    <li class="font-bold text-red-500">UWAGA: Jeśli nie wyślesz klawiatury w ciągu 3 dni od zakupu, ZGŁOŚ TO NA POLICJĘ!</li>
+                </ol>
+                <div class="mt-4 p-4 bg-red-100 border-l-4 border-red-500">
+                    <p class="font-bold text-red-700">WAŻNE: Nie wysyłamy klawiatur z powrotem dopóki nie otrzymamy pełnej płatności!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
@@ -924,43 +941,20 @@
             });
         });
 
-        // Form submission
-        document.getElementById('order-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // Process order and redirect to payment
+        function processOrder(event) {
+            event.preventDefault();
             
-            const form = this;
-            const formData = new FormData(form);
-            const submitButton = form.querySelector('button[type="submit"]');
+            const serviceSelect = document.getElementById('service');
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const priceText = selectedOption.text.match(/\(([^)]+)\)/)[1];
             
-            try {
-                // Disable button during submission
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Wysyłanie...';
-                
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    const name = document.getElementById('name').value;
-                    const service = document.getElementById('service').value;
-                    alert(`Dziękujemy ${name}! Twoje zamówienie na ${service} zostało przyjęte. Skontaktujemy się z Tobą w ciągu 24 godzin.`);
-                    form.reset();
-                } else {
-                    throw new Error('Błąd podczas wysyłania formularza');
-                }
-            } catch (error) {
-                alert('Wystąpił błąd podczas wysyłania formularza. Prosimy spróbować ponownie później.');
-                console.error(error);
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Wyślij zamówienie';
-            }
-        });
+            // Extract price from option text (e.g. "9 zł" from "Podstawowe czyszczenie (9 zł, -40%)")
+            const price = parseFloat(priceText.split(' ')[0]);
+            
+            // Redirect to Paysafecard payment with the correct amount
+            window.location.href = `https://www.paysafecard.com/pl/platnosci/?amount=${price}&currency=PLN`;
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -971,6 +965,16 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
+                    // Reset animation on all sections
+                    document.querySelectorAll('section').forEach(section => {
+                        section.classList.remove('section-animate');
+                    });
+                    
+                    // Add animation to target section
+                    setTimeout(() => {
+                        targetElement.classList.add('section-animate');
+                    }, 100);
+                    
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
