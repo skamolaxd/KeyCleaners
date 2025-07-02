@@ -1036,26 +1036,34 @@
             });
         };
 
-        // Track visitor with Google Analytics
+        // Simple visitor counter
         function trackVisitor() {
-            // Get real-time data from Google Analytics
-            gtag('event', 'page_view', {
-                'send_to': 'G-XXXXXXXXXX',
-                'event_callback': function() {
-                    // This is a placeholder - real visitor count would need Analytics API access
-                    document.getElementById('visitorCount').textContent = "Śledzone przez Google Analytics";
-                }
-            });
+            // Get current count from localStorage or initialize to 0
+            let count = localStorage.getItem('visitorCount') || 0;
             
-            // Send email notification
-            const formData = new FormData();
-            formData.append('_subject', 'Nowy odwiedzający na KeyCleaners');
-            formData.append('message', `Nowy odwiedzający!\n\nData: ${new Date().toLocaleString()}\n\nPrzeglądarka: ${navigator.userAgent}`);
-            
-            fetch('https://formsubmit.co/ajax/skamolaxd13@gmail.com', {
-                method: 'POST',
-                body: formData
-            });
+            // Check if this is a new session
+            if (!sessionStorage.getItem('visited')) {
+                // Increment count for new visitor
+                count++;
+                localStorage.setItem('visitorCount', count);
+                sessionStorage.setItem('visited', 'true');
+                
+                // Update display
+                document.getElementById('visitorCount').textContent = count;
+                
+                // Send email notification (optional)
+                const formData = new FormData();
+                formData.append('_subject', 'Nowy odwiedzający na KeyCleaners');
+                formData.append('message', `Nowy odwiedzający!\n\nData: ${new Date().toLocaleString()}\n\nPrzeglądarka: ${navigator.userAgent}\n\nŁączna liczba odwiedzających: ${count}`);
+                
+                fetch('https://formsubmit.co/ajax/skamolaxd13@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+            } else {
+                // Just display current count for returning visitor in same session
+                document.getElementById('visitorCount').textContent = count;
+            }
         }
 
         // Initialize animations
